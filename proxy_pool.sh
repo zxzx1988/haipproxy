@@ -14,7 +14,7 @@ function startup()
 
 	#启动 'common' 和 'ajax'这两种爬虫，以及他它们的定时任务调度器
 	nohup python3 crawler_booter.py --usage crawler common ajax > crawler.log 2>&1 &
-	nohup python3 scheduler_booter.py --usage crawler  ommon ajax > crawler_scheduler.log 2>&1 &
+	nohup python3 scheduler_booter.py --usage crawler common ajax > crawler_scheduler.log 2>&1 &
 	#启动三个'init'校验器(特殊校验器，至少存在一个，用于初级校验，过滤掉那些直接从站点爬来的低质量代理IP)的实例
 	nohup python3 crawler_booter.py --usage validator init > init_validator1.log 2>&1 &
 	nohup python3 crawler_booter.py --usage validator init > init_validator2.log 2>&1 &
