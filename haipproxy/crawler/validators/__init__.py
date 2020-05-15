@@ -15,6 +15,7 @@ from .httpbin import (
     HttpsValidator)
 from .zhihu import ZhiHuValidator
 from .weibo import WeiBoValidator
+from .xweb import XWebValidator
 
 
 all_validators = [
