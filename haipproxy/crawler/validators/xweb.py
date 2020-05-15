@@ -16,4 +16,4 @@ class XWebValidator(BaseValidator, ValidatorRedisSpider):
     score_queue = VALIDATED_XWEB_QUEUE
     ttl_queue = TTL_XWEB_QUEUE
     speed_queue = SPEED_XWEB_QUEUE
-    success_key = 'var'
+    success_key = ''
