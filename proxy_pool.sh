@@ -20,10 +20,8 @@ function startup()
 	nohup python3 crawler_booter.py --usage validator init > init_validator2.log 2>&1 &
 	nohup python3 crawler_booter.py --usage validator init > init_validator3.log 2>&1 &
 	#启动普通校验器(http校验器和https校验器以http(s)://httpbin.org/ip为校验对象，也可以在这里指定自定义的校验器)，以及其定时任务调度器
-	nohup python3 crawler_booter.py --usage validator https > https_validator.log 2>&1&
-	nohup python3 crawler_booter.py --usage validator http > http_validator.log 2>&1&
-	nohup python3 scheduler_booter.py --usage validator https > validator_https_scheduler.log 2>&1 &
-	nohup python3 scheduler_booter.py --usage validator http > validator_http_scheduler.log 2>&1 &
+	nohup python3 crawler_booter.py --usage validator xweb > xweb_validator.log 2>&1&
+	nohup python3 scheduler_booter.py --usage validator xweb > validator_xweb_scheduler.log 2>&1 &
 }
 
 
