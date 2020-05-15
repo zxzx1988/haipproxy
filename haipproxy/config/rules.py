@@ -13,7 +13,8 @@ from ..config.settings import (
     VALIDATED_WEIBO_QUEUE, TTL_WEIBO_QUEUE,
     SPEED_WEIBO_QUEUE, TEMP_ZHIHU_QUEUE,
     VALIDATED_ZHIHU_QUEUE, TTL_ZHIHU_QUEUE,
-    SPEED_ZHIHU_QUEUE)
+    SPEED_ZHIHU_QUEUE,
+    TEMP_XWEB_QUEUE, VALIDATED_XWEB_QUEUE, TTL_XWEB_QUEUE, SPEED_XWEB_QUEUE)
 
 
 __all__ = ['CRAWLER_TASKS', 'VALIDATOR_TASKS', 'CRAWLER_TASK_MAPS',
@@ -764,6 +765,13 @@ VALIDATOR_TASKS = [
         'interval': 5,
         'enable': 1,
     },
+        {
+        'name': 'xweb',
+        'task_queue': TEMP_XWEB_QUEUE,
+        'resource': VALIDATED_XWEB_QUEUE,
+        'interval': 20,
+        'enable': 1,
+    },
 ]
 
 # validators will fetch proxies from the following queues
@@ -772,14 +780,15 @@ TEMP_TASK_MAPS = {
     'http': TEMP_HTTP_QUEUE,
     'https': TEMP_HTTPS_QUEUE,
     'weibo': TEMP_WEIBO_QUEUE,
-    'zhihu': TEMP_ZHIHU_QUEUE
+    'zhihu': TEMP_ZHIHU_QUEUE,
+    'xweb': TEMP_XWEB_QUEUE
 }
 
 # target website that use http protocol
 HTTP_TASKS = ['http']
 
 # target website that use https protocol
-HTTPS_TASKS = ['https', 'zhihu', 'weibo']
+HTTPS_TASKS = ['https', 'zhihu', 'weibo', 'xweb']
 
 # todo the three maps may be combined in one map
 # validator scheduler and clients will fetch proxies from the following queues
@@ -787,7 +796,8 @@ SCORE_MAPS = {
     'http': VALIDATED_HTTP_QUEUE,
     'https': VALIDATED_HTTPS_QUEUE,
     'weibo': VALIDATED_WEIBO_QUEUE,
-    'zhihu': VALIDATED_ZHIHU_QUEUE
+    'zhihu': VALIDATED_ZHIHU_QUEUE,
+    'xweb': VALIDATED_XWEB_QUEUE
 }
 
 # validator scheduler and clients will fetch proxies from the following queues which are verified recently
@@ -795,13 +805,15 @@ TTL_MAPS = {
     'http': TTL_HTTP_QUEUE,
     'https': TTL_HTTPS_QUEUE,
     'weibo': TTL_WEIBO_QUEUE,
-    'zhihu': TTL_ZHIHU_QUEUE
+    'zhihu': TTL_ZHIHU_QUEUE,
+    'xweb': TTL_XWEB_QUEUE
 }
 
 SPEED_MAPS = {
     'http': SPEED_HTTP_QUEUE,
     'https': SPEED_HTTPS_QUEUE,
     'weibo': SPEED_WEIBO_QUEUE,
-    'zhihu': SPEED_ZHIHU_QUEUE
+    'zhihu': SPEED_ZHIHU_QUEUE,
+    'xweb': SPEED_XWEB_QUEUE
 }
 
