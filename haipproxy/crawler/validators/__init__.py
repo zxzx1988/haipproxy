@@ -20,5 +20,5 @@ from .weibo import WeiBoValidator
 all_validators = [
     HttpBinInitValidator, HttpValidator,
     HttpsValidator, WeiBoValidator,
-    ZhiHuValidator
+    ZhiHuValidator, XWebValidator
 ]
