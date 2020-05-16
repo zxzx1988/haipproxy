@@ -16,8 +16,8 @@ COOKIES_ENABLED = False
 DOWNLOAD_TIMEOUT = 30
 
 # to aviod infinite recursion
-DEPTH_LIMIT = 100
-CONCURRENT_REQUESTS = 30
+DEPTH_LIMIT = 600
+CONCURRENT_REQUESTS = 60
 
 # don't filter anything, also can set dont_filter=True in Request objects
 DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'

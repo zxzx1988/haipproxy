@@ -581,7 +581,7 @@ CRAWLER_TASKS = [
             'http://cn-proxy.com/',
             'http://cn-proxy.com/archives/218'
         ],
-        'task_queue': SPIDER_GFW_TASK,
+        'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
@@ -605,7 +605,7 @@ CRAWLER_TASKS = [
             'https://free-proxy-list.net/uk-proxy.html',
             'https://free-proxy-list.net/anonymous-proxy.html',
         ],
-        'task_queue': SPIDER_GFW_TASK,
+        'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
@@ -626,7 +626,7 @@ CRAWLER_TASKS = [
         'name': 'xroxy',
         'resource': ['http://www.xroxy.com/proxylist.php?port=&type=&ssl=&country=&latency=&reliability=&'
                      'sort=reliability&desc=true&pnum=%s#table' % i for i in range(20)],
-        'task_queue': SPIDER_GFW_TASK,
+        'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'xroxy',
         'interval': 60,
         'enable': 1,
@@ -637,7 +637,7 @@ CRAWLER_TASKS = [
             'http://list.proxylistplus.com/Fresh-HTTP-Proxy-List-1',
             'http://list.proxylistplus.com/SSL-List-1'
         ],
-        'task_queue': SPIDER_GFW_TASK,
+        'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
@@ -658,7 +658,7 @@ CRAWLER_TASKS = [
         'name': 'cnproxy.com',
         'resource': ['http://www.cnproxy.com/proxy%s.html' % i for i in range(1, 11)] +
                     ['http://www.cnproxy.com/proxyedu%s.html' % i for i in range(1, 3)],
-        'task_queue': SPIDER_AJAX_GFW_TASK,
+        'task_queue': SPIDER_AJAX_TASK,
         'parse_type': 'cnproxy',
         'interval': 60,
         'enable': 1,
@@ -666,7 +666,7 @@ CRAWLER_TASKS = [
     {
         'name': 'free-proxy.cz',
         'resource': ['http://free-proxy.cz/en/proxylist/main/%s' % i for i in range(1, 30)],
-        'task_queue': SPIDER_AJAX_GFW_TASK,
+        'task_queue': SPIDER_AJAX_TASK,
         'parse_type': 'free-proxy',
         'interval': 3 * 60,
         'enable': 1,
@@ -674,7 +674,7 @@ CRAWLER_TASKS = [
     {
         'name': 'proxy-list.org',
         'resource': ['https://proxy-list.org/english/index.php?p=%s' % i for i in range(1, 11)],
-        'task_queue': SPIDER_AJAX_GFW_TASK,
+        'task_queue': SPIDER_AJAX_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'css',
@@ -708,7 +708,7 @@ CRAWLER_TASKS = [
             'http://www.gatherproxy.com/proxylist/port/80',
             'http://www.gatherproxy.com/proxylist/port/8118'
         ],
-        'task_queue': SPIDER_AJAX_GFW_TASK,
+        'task_queue': SPIDER_AJAX_TASK,
         'parse_type': 'common',
         'parse_rule': {
             'pre_extract_method': 'xpath',
@@ -742,13 +742,13 @@ VALIDATOR_TASKS = [
         'task_queue': TEMP_HTTP_QUEUE,
         'resource': VALIDATED_HTTP_QUEUE,
         'interval': 5,  # 20 minutes
-        'enable': 1,
+        'enable': 0,  # 这里的enable决定了通过init校验器初级校验后的代理IP是否被投递到本二次校验器的校验队列中
     },
     {
         'name': 'https',
         'task_queue': TEMP_HTTPS_QUEUE,
         'resource': VALIDATED_HTTPS_QUEUE,
-        'interval': 5,
+        'interval': 1,  # 4 minutes
         'enable': 1,
     },
     {
@@ -756,21 +756,21 @@ VALIDATOR_TASKS = [
         'task_queue': TEMP_WEIBO_QUEUE,
         'resource': VALIDATED_WEIBO_QUEUE,
         'interval': 5,
-        'enable': 1,
+        'enable': 0,
     },
     {
         'name': 'zhihu',
         'task_queue': TEMP_ZHIHU_QUEUE,
         'resource': VALIDATED_ZHIHU_QUEUE,
         'interval': 5,
-        'enable': 1,
+        'enable': 0,
     },
-        {
+    {
         'name': 'xweb',
         'task_queue': TEMP_XWEB_QUEUE,
         'resource': VALIDATED_XWEB_QUEUE,
         'interval': 20,
-        'enable': 1,
+        'enable': 0,
     },
 ]
 
