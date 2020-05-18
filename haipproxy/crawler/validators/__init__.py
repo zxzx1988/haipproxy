@@ -11,7 +11,7 @@ in config/settings.py and register tasks in config/rules.py, and add
 the task key to HttpBinInitValidator's https_tasks or http_tasks
 """
 from .httpbin import (
-    HttpBinInitValidator, HttpValidator,
+    HttpBinInitValidator, HttpBinInitValidator_Socks4, HttpValidator,
     HttpsValidator)
 from .zhihu import ZhiHuValidator
 from .weibo import WeiBoValidator
@@ -19,7 +19,8 @@ from .xweb import XWebValidator
 
 
 all_validators = [
-    HttpBinInitValidator, HttpValidator,
+    HttpBinInitValidator, HttpBinInitValidator_Socks4, 
+    HttpValidator,
     HttpsValidator, WeiBoValidator,
     ZhiHuValidator, XWebValidator
 ]

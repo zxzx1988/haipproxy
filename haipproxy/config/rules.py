@@ -5,7 +5,7 @@ spiders will parse response content according to the rules.
 from ..config.settings import (
     SPIDER_COMMON_TASK, SPIDER_AJAX_TASK,
     SPIDER_GFW_TASK, SPIDER_AJAX_GFW_TASK,
-    INIT_HTTP_QUEUE, VALIDATED_HTTP_QUEUE,
+    INIT_HTTP_QUEUE, VALIDATED_HTTP_QUEUE, INIT_SOCKS4_QUEUE,
     VALIDATED_HTTPS_QUEUE, TEMP_HTTP_QUEUE,
     TEMP_HTTPS_QUEUE, TTL_HTTP_QUEUE,
     TTL_HTTPS_QUEUE, SPEED_HTTPS_QUEUE,
@@ -777,6 +777,7 @@ VALIDATOR_TASKS = [
 # validators will fetch proxies from the following queues
 TEMP_TASK_MAPS = {
     'init': INIT_HTTP_QUEUE,
+    'init_socks4': INIT_SOCKS4_QUEUE,
     'http': TEMP_HTTP_QUEUE,
     'https': TEMP_HTTPS_QUEUE,
     'weibo': TEMP_WEIBO_QUEUE,
@@ -789,6 +790,9 @@ HTTP_TASKS = ['http']
 
 # target website that use https protocol
 HTTPS_TASKS = ['https', 'zhihu', 'weibo', 'xweb']
+
+# target website that use Socks4 protocol
+SOCKS4_TASKS = ['https', 'zhihu', 'weibo', 'xweb']
 
 # todo the three maps may be combined in one map
 # validator scheduler and clients will fetch proxies from the following queues
