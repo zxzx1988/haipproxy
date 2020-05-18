@@ -17,10 +17,10 @@ function startup()
 	nohup python3 crawler_booter.py --usage crawler common ajax > crawler.log 2>&1 &
 	nohup python3 scheduler_booter.py --usage crawler common ajax > crawler_scheduler.log 2>&1 &
 	#启动三个'init'校验器(特殊校验器，至少存在一个，用于初级校验，过滤掉那些直接从站点爬来的低质量代理IP)的实例
-	nohup python3 crawler_booter.py --usage validator init > init_validator1.log 2>&1 &
-	nohup python3 crawler_booter.py --usage validator init > init_validator2.log 2>&1 &
-	nohup python3 crawler_booter.py --usage validator init > init_validator3.log 2>&1 &
-	nohup python3 crawler_booter.py --usage validator init > init_validator3.log 2>&1 &
+	nohup python3 crawler_booter.py --usage validator init init_socks4 > init_validator1.log 2>&1 &
+	nohup python3 crawler_booter.py --usage validator init init_socks4 > init_validator2.log 2>&1 &
+	nohup python3 crawler_booter.py --usage validator init init_socks4 > init_validator3.log 2>&1 &
+	nohup python3 crawler_booter.py --usage validator init init_socks4 > init_validator3.log 2>&1 &
 	#启动普通校验器(http校验器和https校验器以http(s)://httpbin.org/ip为校验对象，也可以在这里指定自定义的校验器)，以及其定时任务调度器
 	#这里决定启动哪个种类的校验器，而rules.py中VALIDATOR_TASKS的enable决定的是将'init'校验器初级校验后的代理ip投递到哪个二级校验器任务队列中
 	nohup python3 crawler_booter.py --usage validator https > https_validator.log 2>&1 &
