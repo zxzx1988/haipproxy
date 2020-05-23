@@ -113,9 +113,8 @@ class BaseSpider:
         infos = json.loads(response.body.decode('utf-8'))
         items = list()
 
-        for r in detail_rule:
-            infos = infos.get(r)
-        for info in infos:
+        for info in infos.values():
+            #info = infos.get(r)
             ip = info.get(ip_key)
             port = info.get(port_key)
             if not self.proxy_check(ip, port):
@@ -124,6 +123,13 @@ class BaseSpider:
             protocols = self.procotol_extractor(str(info))
             for protocol in protocols:
                 items.append(ProxyUrlItem(url=self.construct_proxy_url(protocol, ip, port)))
+        if not items:
+            ip = infos.get(ip_key)
+            port = infos.get(port_key)
+            if self.proxy_check(ip, port):
+                protocols = self.procotol_extractor(str(info))
+                for protocol in protocols:
+                    items.append(ProxyUrlItem(url=self.construct_proxy_url(protocol, ip, port)))
 
         return items
 

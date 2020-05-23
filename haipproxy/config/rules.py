@@ -35,7 +35,7 @@ CRAWLER_TASKS = [
             'port_key': 'port',
         },
         'interval': 5,
-        'enable': 1,
+        'enable': 0,  ##已不提供免费代理，需要注册后使用API提取，另外域名也已更换
     },
     {
         # now we can't get proxies from it,but it required by ip181
@@ -71,7 +71,7 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 60,
-        'enable': 1
+        'enable': 1  #下载页面报错，需要禁用 USE_SENTRY 后观察日志中输出的reason
     },
     {
         'name': 'kuaidaili.com',
@@ -92,12 +92,12 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 60,
-        'enable': 1
+        'enable': 1  #下载页面报错，需要禁用 USE_SENTRY 后观察日志中输出的reason
     },
     {
-        'name': 'kxdaili.com',
+        'name': 'kxdaili.com',  #Normal
         'resource': [
-            'http://www.kxdaili.com/dailiip/%s/%s.html#ip' % (i, j) for i in range(1, 3) for j in range(1, 11)
+            'http://www.kxdaili.com/dailiip/1/%s.html#ip' % j for j in range(1, 7)
         ],
         'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
@@ -117,7 +117,7 @@ CRAWLER_TASKS = [
         'enable': 1
     },
     {
-        'name': 'mrhinkydink.com',
+        'name': 'mrhinkydink.com',   #Normal
         'resource': ['http://www.mrhinkydink.com/proxies.htm'],
         'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
@@ -134,10 +134,10 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 2 * 60,
-        'enable': 1,
+        'enable': 1, 
     },
     {
-        'name': 'nianshao.me',
+        'name': 'nianshao.me',  #Down
         'resource': ['http://www.nianshao.me/?stype=1&page=%s' % i for i in range(1, 11)] +
                     ['http://www.nianshao.me/?stype=2&page=%s' % i for i in range(1, 11)] +
                     ['http://www.nianshao.me/?stype=5&page=%s' % i for i in range(1, 11)],
@@ -156,10 +156,10 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 60,
-        'enable': 1  # it seems the website is down
+        'enable': 0  # it seems the website is down
     },
     {
-        'name': '66ip.cn',
+        'name': '66ip.cn',  # Down
         'resource': ['http://www.66ip.cn/%s.html' % i for i in range(1, 3)] +
                     ['http://www.66ip.cn/areaindex_%s/%s.html' % (i, j)
                      for i in range(1, 35) for j in range(1, 3)],
@@ -178,10 +178,10 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 2 * 60,
-        'enable': 1
+        'enable': 0  # Down
     },
     {
-        'name': 'baizhongsou.com',
+        'name': 'baizhongsou.com',  #不提供免费代理
         'resource': ['http://ip.baizhongsou.com/'],
         'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
@@ -198,10 +198,10 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 30,
-        'enable': 1
+        'enable': 0  #不提供免费代理
     },
     {
-        'name': 'data5u.com',
+        'name': 'data5u.com',  #不提供免费代理
         'resource': [
             'http://www.data5u.com/free/index.shtml',
             'http://www.data5u.com/free/gngn/index.shtml',
@@ -222,7 +222,7 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 10,
-        'enable': 1,
+        'enable': 0,  #不提供免费代理
     },
     {
         # can not access
@@ -264,12 +264,11 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 10,
-        'enable': 1,
+        'enable': 0,
     },
     {
         'name': 'ip3366.net',
-        'resource': ['http://www.ip3366.net/free/?stype=1&page=%s' % i for i in range(1, 3)] +
-                    ['http://www.ip3366.net/free/?stype=3&page=%s' % i for i in range(1, 3)],
+        'resource': ['http://www.ip3366.net/free/?stype=1&page=%s' % i for i in range(1, 7)],
         'task_queue': SPIDER_COMMON_TASK,
         'parse_type': 'common',
         'parse_rule': {
@@ -292,8 +291,6 @@ CRAWLER_TASKS = [
         'resource': [
             'http://www.iphai.com/free/ng',
             'http://www.iphai.com/free/wg',
-            'http://www.iphai.com/free/np',
-            'http://www.iphai.com/free/wp',
             'http://www.iphai.com/'
         ],
         'task_queue': SPIDER_COMMON_TASK,
@@ -314,7 +311,7 @@ CRAWLER_TASKS = [
         'enable': 1,
     },
     {
-        'name': 'swei360.com',
+        'name': 'swei360.com', #已失效
         'resource': ['http://www.swei360.com/free/?page=%s' % i for i in range(1, 4)] +
                     ['http://www.swei360.com/free/?stype=3&page=%s' % i for i in range(1, 4)],
         'task_queue': SPIDER_COMMON_TASK,
@@ -332,10 +329,10 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 30,
-        'enable': 1,
+        'enable': 0, #已失效
     },
     {
-        'name': 'yundaili.com',
+        'name': 'yundaili.com',  #已失效
         'resource': [
             'http://www.yun-daili.com/free.asp?stype=1',
             'http://www.yun-daili.com/free.asp?stype=2',
@@ -357,7 +354,7 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 6 * 60,
-        'enable': 1,
+        'enable': 0,  #已失效
     },
     {
         'name': 'ab57.ru',
@@ -374,7 +371,7 @@ CRAWLER_TASKS = [
         'enable': 1,
     },
     {
-        'name': 'proxylists.net',
+        'name': 'www.proxylists.net/http_highanon.txt',
         'resource': ['http://www.proxylists.net/http_highanon.txt'],
         'parse_type': 'text',
         'task_queue': SPIDER_COMMON_TASK,
@@ -386,6 +383,25 @@ CRAWLER_TASKS = [
         },
         'interval': 60,
         'enable': 1,
+    },
+    {
+        'name': 'www.proxylists.net/us_',
+        'resource': ['http://www.proxylists.net/us_%s.html' %  i for i in range(150)],
+        'parse_type': 'common',
+        'task_queue': SPIDER_AJAX_TASK,
+        'parse_rule': {
+            'pre_extract_method': 'xpath',
+            'pre_extract': '//tr',
+            'infos_pos': 1,
+            'infos_end': -1,
+            'detail_rule': 'td::text',
+            'ip_pos': 0,
+            'port_pos': 1,
+            'split_detail': False,
+            'protocols': None
+        },
+        'interval': 60,
+        'enable': 0,
     },
     {
         'name': 'my-proxy.com',
@@ -488,7 +504,7 @@ CRAWLER_TASKS = [
         'enable': 1,
     },
     {
-        'name': 'rmccurdy.com',
+        'name': 'rmccurdy.com',  ##失效
         'resource': [
             'https://www.rmccurdy.com/scripts/proxy/good.txt'
         ],
@@ -501,7 +517,7 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 60,
-        'enable': 1,
+        'enable': 0, ##失效
     },
     {
         # there are some problems using crawlspider, so we use basic spider
@@ -532,7 +548,7 @@ CRAWLER_TASKS = [
             'protocols': None
         },
         'interval': 2 * 60,
-        'enable': 1,
+        'enable': 0,
     },
     {
         'name': 'proxydb.net',
@@ -725,6 +741,19 @@ CRAWLER_TASKS = [
         'interval': 60,
         'enable': 1,
     },
+    {
+        'name': 'getproxylist.com/proxy?apiKey',
+        'resource': ['https://api.getproxylist.com/proxy?apiKey=b3e26ff9b8a3bcaea306faa387f259683e4e1447&protocol[]=http&protocol[]=socks4&protocol[]=socks5&anonymity[]=high%20anonymity&allowsRefererHeader=1&allowsUserAgentHeader=1&allowsCustomHeaders=1&allowsCookies=1&allowsPost=1&maxConnectTime=10&maxSecondsToFirstByte=10&minDownloadSpeed=100&all=1'],
+        'task_queue': SPIDER_COMMON_TASK,
+        'parse_type': 'json',
+        'parse_rule': {
+            'detail_rule': ['0', '1', '2', '3'],
+            'ip_key': 'ip',
+            'port_key': 'port',
+        },
+        'interval': 5,
+        'enable': 1,
+    },
 ]
 
 # crawler will fetch tasks from the following queues
@@ -821,3 +850,12 @@ SPEED_MAPS = {
     'xweb': SPEED_XWEB_QUEUE
 }
 
+def filterDisabledTasks(All_Tasks):
+    ret = list()
+    for task in All_Tasks:
+        if task.get('enable', 0) != 0:
+            ret.append(task)
+    return ret
+
+VALIDATOR_TASKS = filterDisabledTasks(VALIDATOR_TASKS)
+CRAWLER_TASKS = filterDisabledTasks(CRAWLER_TASKS)

@@ -150,7 +150,7 @@ ORIGIN_IP = ''
 # sentry for error tracking, for more information see
 # https://github.com/getsentry/sentry
 # disable it by setting USE_SENTRY = False
-USE_SENTRY = True
+USE_SENTRY = False
 SENTRY_DSN = 'http://82c130028fa942f29add1e0aa0ff9cbd:cffa174304d248b9aa2bdb385d3b01b8@127.0.0.1:9000/6'
 
 # prometheus for monitoring, for more information see
